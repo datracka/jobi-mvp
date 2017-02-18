@@ -1,7 +1,7 @@
 import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
-import rootSchema from './rootSchema.js';
+import Schema from './schema.js';
 
 const PORT = process.env.PORT;
 console.log(PORT);
@@ -9,7 +9,7 @@ console.log(PORT);
 const app = express();
 
 // graphql endpoint
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: rootSchema }));
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: Schema }));
 
 // graphiql
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
